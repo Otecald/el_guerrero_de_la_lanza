@@ -1,0 +1,24 @@
+﻿<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>Canvas</title>
+		<link rel=icon href=favicon.ico></link>
+		<script src="utilidades.js"></script>
+		<script src="vector.js"></script>
+		<script src="gametimer.js"></script>
+		<script src="canvas.js"></script>
+	</head>
+	<body>
+		<button onClick="drawWorld(fC())">drawWorld</button>
+		<button onClick="updateWorld()">updateWorld</button>
+		<button onClick="createWorld(fC())">createWorld</button>
+		<button onClick="deleteWorld()">deleteWorld</button>
+		<!--<button onClick="window.setInterval(updateWorld,2000)">+velocidad</button>-->
+		<button onClick="increaseSpeed()">+velocidad</button>
+		<hr/>
+		<canvas id="lienzo" width="300" height="300"></canvas>
+		<p id="VelActualP">
+		Velocidad actual 30 cuadros por segundo (base)
+		</p>
+	</body>
+</html>
