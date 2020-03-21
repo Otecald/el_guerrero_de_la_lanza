@@ -111,7 +111,7 @@ function initGame()
 	var spr = newSprite()
 	
 	spr.img = new Image()
-	try{spr.img.src = "https://dl.dropboxusercontent.com/u/3906848/Proyecto%20matiz/sprite.png"}catch(e){spr.img.src="sprite.png"}
+	spr.img.src="sprite.png"
 	
 	spr.width = 32
 	spr.height = 32
