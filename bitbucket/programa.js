@@ -32,7 +32,7 @@ function descargar_scripts(lista,callback){
 		.concat()
 	)
 	var descargas = lista.map(x=>{
-		descargar(x,false,callback)
+		descargar( x, false, y=>callback(y,x) )
 	})
 	var locales = existentes.filter(x=>!x.src).map(x=>{
 		var texto = x.innerHTML
@@ -49,9 +49,12 @@ function insertar_html(url){
 			.replace(/<script.*>.*<\/script>\s*/g,"")
 		)
 		document.querySelector("html").innerHTML=texto_modificado
-		function modificar_e_insertar_script(texto,procesar){
+		function modificar_e_insertar_script(x,ruta){
 			var script = document.createElement("script")
-			script.innerHTML = procesar_texto(texto,url_proyecto_bitbucket)
+			script.innerHTML = procesar_texto(x,url_proyecto_bitbucket)
+			if(ruta){
+				script.setAttribute("href",ruta)
+			}
 			document.head.appendChild(script)
 		}
 		var descargas = descargar_scripts(scripts,modificar_e_insertar_script)
