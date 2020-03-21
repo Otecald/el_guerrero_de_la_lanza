@@ -18,5 +18,15 @@ function init()
 	}
 	createWorld(fC())
 }
-window.onload = init
+function iniciar(callback){
+	document.onreadystatechange = function(){
+		if(!window.contador_listo){
+			window.contador_listo = 0
+		}else{
+			callback()
+		}
+		++window.contador_listo
+	}
+}
+iniciar(init)
 
