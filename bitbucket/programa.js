@@ -16,11 +16,14 @@ function insertar_html(url){
 	var descarga = (fetch(url)
 		.then(x=>x.text())
 		.then(x=>{
-			document.querySelector("html").innerHTML=x
+			var y = url.split("/").slice(0,-1).concat("").join("/")
+			var z = x.replace(/(href|src)(\s*=)(\s*["']?)(\S+)/g,'$1$2$3'+y+'$4')
+			document.querySelector("html").innerHTML=z
 		})
 	)
 }
 function descargar_el_guerrero_de_la_lanza_desde_bitbucket(){
-	descargar_bitbucket("ArtEze","proyecto_matiz","index.html",insertar_html)
+	return descargar_bitbucket("ArtEze","el_guerrero_de_la_lanza","index.html",insertar_html)
 }
-document.onload = descargar_el_guerrero_de_la_lanza_desde_bitbucket
+window.onload = descargar_el_guerrero_de_la_lanza_desde_bitbucket
+
