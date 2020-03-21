@@ -18,4 +18,5 @@ function init()
 	}
 	createWorld(fC())
 }
-document.onload = init
+window.onload = init
+
