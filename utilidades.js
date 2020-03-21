@@ -25,9 +25,17 @@ function iniciar(callback){
 	if(!window.iniciado){
 		window.iniciado = false
 	}
+	if(!window.intento){
+		window.intento = 0
+	}
 	function función(callback){
-		callback()
-		window.iniciado = true
+		try{
+			callback()
+			window.iniciado = true
+		}catch(e){
+			console.log(window.intento,e)
+			++window.intento
+		}
 	}
 	document.onreadystatechange = function(){
 		if( window.contador_listo && !window.iniciado ){
@@ -38,10 +46,12 @@ function iniciar(callback){
 	var intentar_iniciar = setInterval(function(){
 		if(!window.iniciado){
 			función(callback)
-			clearInterval(intentar_iniciar)
+			if(window.iniciado){
+				clearInterval(intentar_iniciar)
+			}
 		}
 		++window.contador_listo
-	},5000)
+	},50)
 }
 iniciar(init)
 
