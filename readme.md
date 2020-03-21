@@ -13,6 +13,7 @@ Este proyecto inicialmente era para cambiar la matiz de una imagen mediante _Jav
 
  - _GitHub Pages:_ https://otecald.github.io/el_guerrero_de_la_lanza/
  - _Bitbucket:_ https://bitbucket.org/ArtEze/el_guerrero_de_la_lanza/
+ - _Carga de Bitbucket hacia GitHub Pages:_ https://otecald.github.io/el_guerrero_de_la_lanza/bitbucket/
 
 ## Proyecto Matiz (el proyecto original)
 
