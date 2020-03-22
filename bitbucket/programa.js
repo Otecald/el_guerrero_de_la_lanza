@@ -2,9 +2,9 @@ function descargar(url,es_json,callback){
 	var tipo = es_json?"json":"text"
 	return fetch(url).then(x=>x[tipo]()).then(callback)
 }
-function descargar_bitbucket(usuario,proyecto,ruta,callback){
+function descargar_bitbucket(espacio_de_trabajo_o_usuario,proyecto,ruta,callback){
 	var url_api = "https://api.bitbucket.org/2.0/repositories/"
-	var url = url_api+usuario+"/"+proyecto+"/src/"
+	var url = url_api+espacio_de_trabajo_o_usuario+"/"+proyecto+"/src/"
 	return descargar(url,true,x=>{
 		var regex = new RegExp("/"+ruta+"$","")
 		var url_archivo = (x.values
@@ -61,7 +61,7 @@ function insertar_html(url){
 	})
 }
 function descargar_el_guerrero_de_la_lanza_desde_bitbucket(){
-	return descargar_bitbucket("ArtEze","el_guerrero_de_la_lanza","index.html",insertar_html)
+	return descargar_bitbucket("arteze","el_guerrero_de_la_lanza","index.html",insertar_html)
 }
 function iniciar(callback,mostrar_error){
 	var iniciado = false
