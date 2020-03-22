@@ -63,5 +63,20 @@ function insertar_html(url){
 function descargar_el_guerrero_de_la_lanza_desde_bitbucket(){
 	return descargar_bitbucket("ArtEze","el_guerrero_de_la_lanza","index.html",insertar_html)
 }
-window.onload = descargar_el_guerrero_de_la_lanza_desde_bitbucket
+function iniciar(callback){
+	var iniciado = false
+	var intervalo = setInterval(function(){
+		try{
+			callback()
+			iniciado = true
+		}catch(e){
+			console.log(e)
+		}
+		if(iniciado){
+			clearInterval(intervalo)
+		}
+	})
+	return intervalo
+}
+iniciar(descargar_el_guerrero_de_la_lanza_desde_bitbucket)
 

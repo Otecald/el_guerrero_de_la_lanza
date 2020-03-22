@@ -19,39 +19,15 @@ function init()
 	createWorld(fC())
 }
 function iniciar(callback){
-	if(!window.contador_listo){
-		window.contador_listo = 0
-	}
-	if(!window.iniciado){
-		window.iniciado = false
-	}
-	if(!window.intento){
-		window.intento = 0
-	}
-	function función(callback){
+	var intervalo = setInterval(function(){
 		try{
 			callback()
-			window.iniciado = true
-		}catch(e){
-			console.log(window.intento,e)
-			++window.intento
+			iniciado = true
+		}catch(e){}
+		if(iniciado){
+			clearInterval(intervalo)
 		}
-	}
-	document.onreadystatechange = function(){
-		if( window.contador_listo && !window.iniciado ){
-			función(callback)
-		}
-		++window.contador_listo
-	}
-	var intentar_iniciar = setInterval(function(){
-		if(!window.iniciado){
-			función(callback)
-			if(window.iniciado){
-				clearInterval(intentar_iniciar)
-			}
-		}
-		++window.contador_listo
-	},50)
+	})
 }
 iniciar(init)
 
